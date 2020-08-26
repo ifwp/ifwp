@@ -1,0 +1,83 @@
+.form-label-group > input,
+.form-label-group > label,
+.form-label-group > select {
+    height: 3.125rem;
+    padding: .75rem;
+}
+.form-label-group > textarea {
+    height: 6.25rem;
+    overflow: hidden;
+    padding: .75rem;
+    resize: none;
+}
+.form-label-group > label {
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: var(--secondary);
+    cursor: text; /* Match the input under the label */
+    display: block;
+    left: 0;
+    line-height: 1.5;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transition: all .1s ease-in-out;
+    width: 100%;
+}
+.form-label-group input::-webkit-input-placeholder,
+.form-label-group textarea::-webkit-input-placeholder {
+    color: transparent;
+}
+.form-label-group input:-ms-input-placeholder,
+.form-label-group textarea:-ms-input-placeholder {
+    color: transparent;
+}
+.form-label-group input::-ms-input-placeholder,
+.form-label-group textarea::-ms-input-placeholder {
+    color: transparent;
+}
+.form-label-group input::-moz-placeholder,
+.form-label-group textarea::-moz-placeholder {
+    color: transparent;
+}
+.form-label-group input::placeholder,
+.form-label-group textarea::placeholder {
+    color: transparent;
+}
+.form-label-group input:not(:placeholder-shown),
+.form-label-group textarea:not(:placeholder-shown),
+.form-label-group select.placeholder-hidden {
+    padding-bottom: .25rem;
+    padding-top: 1.25rem;
+}
+.form-label-group input:not(:placeholder-shown) ~ label,
+.form-label-group textarea:not(:placeholder-shown) ~ label,
+.form-label-group select.placeholder-hidden ~ label {
+    color: var(--secondary);
+    font-size: 12px;
+    padding-bottom: .25rem;
+    padding-top: .25rem;
+}
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+    .form-label-group > label {
+        display: none;
+    }
+    .form-label-group input::-ms-input-placeholder,
+    .form-label-group textarea::-ms-input-placeholder {
+        color: var(--secondary);
+    }
+}
+/* Fallback for IE
+-------------------------------------------------- */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .form-label-group > label {
+        display: none;
+    }
+    .form-label-group input:-ms-input-placeholder,
+    .form-label-group textarea:-ms-input-placeholder {
+        color: var(--secondary);
+    }
+}
