@@ -86,7 +86,25 @@ if(!function_exists('ifwp_is_extension_allowed')){
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-if(!function_exists('ifwp_maybe_require_media_functions')){
+if(!function_exists('ifwp_maybe_generate_attachment_metadata')){
+	function ifwp_maybe_generate_attachment_metadata($attachment = null){
+		$attachment = get_post($attachment);
+		if(!$attachment or $attachment->post_type != 'attachment'){
+			return [];
+		}
+		wp_raise_memory_limit('admin');
+		wp_maybe_generate_attachment_metadata($attachment);
+		$metadata = wp_get_attachment_metadata($attachment->ID);
+		if(!$metadata){
+			return [];
+		}
+		return $metadata;
+    }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+/*if(!function_exists('ifwp_maybe_require_media_functions')){
 	function ifwp_maybe_require_media_functions(){
 		if(!is_admin()){
 			require_once(ABSPATH . 'wp-admin/includes/file.php');
@@ -94,7 +112,7 @@ if(!function_exists('ifwp_maybe_require_media_functions')){
 			require_once(ABSPATH . 'wp-admin/includes/media.php');
 		}
 	}
-}
+}*/
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

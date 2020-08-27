@@ -13,7 +13,7 @@ IFWP
 
 == Description ==
 
-Improvements and Fixes for WordPress
+Improvements and Fixes for WordPress.
 
 == Changelog ==
 

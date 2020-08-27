@@ -2,7 +2,7 @@
 /*
 Author: Vidsoe
 Author URI: https://vidsoe.com
-Description: Improvements and Fixes for WordPress
+Description: Improvements and Fixes for WordPress.
 Domain Path:
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

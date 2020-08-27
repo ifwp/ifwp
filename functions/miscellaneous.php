@@ -20,7 +20,10 @@ if(!function_exists('ifwp_add_admin_notice')){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 if(!function_exists('ifwp_array_keys_exist')){
-	function ifwp_array_keys_exist($keys, $array){
+	function ifwp_array_keys_exist($keys = [], $array = []){
+		if(!$keys or !$array or !is_array($keys) or !is_array($array)){
+			return false;
+		}
 		foreach($keys as $key){
 			if(!array_key_exists($key, $array)){
 				return false;

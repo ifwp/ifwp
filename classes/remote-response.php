@@ -14,7 +14,8 @@ if(!class_exists('IFWP_Remote_Response')){
             } else {
                 $this->message = __('Invalid object type.');
             }
-            $this->raw_response = is_null($raw_response) ? $response : $raw_response;
+            //$this->raw_response = is_null($raw_response) ? $response : $raw_response;
+            $this->raw_response = $raw_response;
         }
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,9 +73,13 @@ if(!class_exists('IFWP_Remote_Response')){
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public function to_wp_error(){
-            return new WP_Error('ifwp_remote_response_error', $this->message, [
-                'status' => $this->code,
-            ]);
+            if(is_wp_error($this->raw_response)){
+                return $this->raw_response;
+            } else {
+                return new WP_Error('ifwp_remote_response_error', $this->message, [
+                    'status' => $this->code,
+                ]);
+            }
         }
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
