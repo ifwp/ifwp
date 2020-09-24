@@ -175,7 +175,7 @@ if(!class_exists('IFWP_Google')){
 				'icon' => 'dashicons-google',
 			]);
             $recaptcha->add_field('hide_recaptcha_badge', [
-                'label_description' => 'You must use the [ifwp_hide_recaptcha_badge] shortcode.',
+                'label_description' => 'You must use the <strong>[ifwp_hide_recaptcha_badge]</strong> shortcode.',
                 'name' => 'Hide recaptcha badge?',
                 'type' => 'switch',
             ]);
