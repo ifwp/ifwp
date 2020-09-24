@@ -116,7 +116,7 @@ if(!class_exists('IFWP_Beaver_Builder_Theme')){
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         static public function ifwp_loaded(){
-            add_action('after_setup_theme', function() use($tag_manager){
+            add_action('after_setup_theme', function(){
                 $current_theme = wp_get_theme();
                 if($current_theme->get('Name') == 'Beaver Builder Theme' or $current_theme->get('Template') == 'bb-theme'){
                     $bb_theme = ifwp_tab('Beaver Builder', 'Beaver Builder Theme');
