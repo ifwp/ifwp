@@ -2,6 +2,44 @@
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
+// classes
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if(!class_exists('IFWP_JWT')){
+    class IFWP_JWT {
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //
+        // static public
+        //
+       // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        static public function ifwp_loaded(){
+			$general = ifwp_tab('', 'JWT');
+            $general->add_field('load_jwt', [
+				'label_description' => 'For details, see the <a href="https://github.com/firebase/php-jwt" target="_blank">PHP-JWT</a> by <a href="https://github.com/firebase" target="_blank">Firebase</a>.',
+                'name' => 'Load PHP-JWT?',
+            	'type' => 'switch',
+            ]);
+            if($general->load_jwt){
+                ifwp_maybe_load_php_jwt();
+            }
+        }
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        static public function load(){
+            add_action('ifwp_loaded', [__CLASS__, 'ifwp_loaded']);
+        }
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
 // functions
 //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,3 +81,11 @@ if(!function_exists('ifwp_maybe_load_php_jwt')){
 		}
     }
 }
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// loader
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+IFWP_JWT::load();
