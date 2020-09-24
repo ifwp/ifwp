@@ -140,6 +140,7 @@ if(!class_exists('IFWP_Google')){
 				'icon' => 'dashicons-google',
 			]);
             $tag_manager->add_field('container_id', [
+                'label_description' => 'For details, see <a href="https://tagmanager.google.com/" target="_blank">Tag Manager</a>.',
                 'name' => 'Container ID',
                 'placeholder' => 'GTM-A1B2C3D',
                 'type' => 'text',
