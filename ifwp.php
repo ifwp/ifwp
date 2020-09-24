@@ -1,7 +1,7 @@
 <?php
 /*
-Author: Vidsoe
-Author URI: https://vidsoe.com
+Author: IFWP
+Author URI: https://github.com/ifwp
 Description: Improvements and Fixes for WordPress.
 Domain Path:
 License: GPL2
@@ -10,49 +10,20 @@ Network:
 Plugin Name: IFWP
 Plugin URI: https://github.com/ifwp/ifwp
 Text Domain: ifwp
-Version: 2020.8.25.1
+Version: 2020.9.24
 */
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 if(!defined('ABSPATH')){
     die("Hi there! I'm just a plugin, not much I can do when called directly.");
 }
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 if(defined('IFWP')){
-    die("IFWP constant already exists.");
+    wp_die("IFWP constant already exists.");
 }
 define('IFWP', __FILE__);
-$wp_upload_dir = wp_upload_dir();
-define('IFWP_BASEDIR', trailingslashit($wp_upload_dir['basedir']) . 'ifwp');
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-foreach(glob(plugin_dir_path(IFWP) . 'functions/*.php') as $functions){
-    require_once($functions);
-}
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-ifwp_build_update_checker('https://github.com/ifwp/ifwp', IFWP, 'ifwp');
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-ifwp_on('after_setup_theme', function(){
-    $src = get_stylesheet_directory() . '/ifwp-functions.php';
-    if(file_exists($src)){
-        require_once($src);
+foreach(glob(plugin_dir_path(IFWP) . 'extensions/*', GLOB_ONLYDIR) as $dir){
+    $file = $dir . '/load.php';
+    if(file_exists($file)){
+        require_once($file);
     }
-});
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-ifwp_on('wp_enqueue_scripts', function(){
-    $src = plugin_dir_url(IFWP) . 'functions.js';
-    $ver = filemtime(plugin_dir_path(IFWP) . 'functions.js');
-    wp_enqueue_script('ifwp-functions', $src, ['jquery'], $ver, true);
-});
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+}
+do_action('ifwp_loaded');
