@@ -13,6 +13,8 @@ if(!function_exists('ifwp_build_update_checker')){
     }
 }
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 if(!function_exists('ifwp_maybe_load_plugin_update_checker')){
     function ifwp_maybe_load_plugin_update_checker(){
 		if(!class_exists('\Puc_v4_Factory')){

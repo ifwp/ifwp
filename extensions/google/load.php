@@ -94,7 +94,7 @@ if(!class_exists('IFWP_Google')){
 					'std' => true,
 				]);
 				if($api->get_option('load_google_api', true)){
-        			require_once($dir . '/vendor/autoload.php');
+        			ifwp_maybe_load_google_api();
 				}
             } else {
 				$api->add_field([
@@ -215,6 +215,35 @@ if(!class_exists('IFWP_Google')){
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// functions
+//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if(!function_exists('ifwp_google_client')){
+    function ifwp_google_client(...$args){
+        ifwp_maybe_load_google_api();
+		if(class_exists('\Google_Client')){
+            return new \Google_Client(...$args);
+		}
+    }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if(!function_exists('ifwp_maybe_load_google_api')){
+    function ifwp_maybe_load_google_api(){
+		if(!class_exists('\Google_Client')){
+            $wp_upload_dir = wp_upload_dir();
+            $dir = $wp_upload_dir['basedir'] . '/ifwp/google-api';
+            if(is_dir($dir)){
+                require_once($dir . '/vendor/autoload.php');
+            }
+		}
     }
 }
 
