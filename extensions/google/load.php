@@ -141,7 +141,7 @@ if(!class_exists('IFWP_Google')){
 			]);
             $tag_manager->add_field('container_id', [
                 'name' => 'Container ID',
-                'placeholder' => 'GTM-50M3TH1N6',
+                'placeholder' => 'GTM-A1B2C3D',
                 'type' => 'text',
             ]);
             if($tag_manager->container_id){
