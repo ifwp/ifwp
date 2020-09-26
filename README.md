@@ -1,6 +1,7 @@
 ### IFWP
 Improvements and Fixes for WordPress.
-* [ifwp.co](https://ifwp.co)
+
+[ifwp.co](https://ifwp.co)
 
 <!--
 **ifwp/ifwp** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
