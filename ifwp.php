@@ -10,7 +10,7 @@ Network:
 Plugin Name: IFWP
 Plugin URI: https://github.com/ifwp/ifwp
 Text Domain: ifwp
-Version: 2020.9.24.10
+Version: 0.9.26
 */
 
 if(!defined('ABSPATH')){
