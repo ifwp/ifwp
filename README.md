@@ -1,5 +1,5 @@
 ### IFWP
 
-Improvements and Fixes for WordPress...
+Improvements and Fixes for WordPress.
 
 [ifwp.co](https://ifwp.co)
